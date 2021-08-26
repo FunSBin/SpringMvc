@@ -12,7 +12,7 @@ import java.util.SortedMap;
 public class UserController {
 
 
-    @RequestMapping(value = "/setUser/{name}/{age}")
+    @RequestMapping(value = "/setUser/{name}/{age}/{birthDate}")
     public String setUser(
 //            User user
             @PathVariable("name") String name,
