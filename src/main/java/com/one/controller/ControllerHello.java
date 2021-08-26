@@ -78,5 +78,17 @@ public class ControllerHello {
     }
 
 
+    @RequestMapping("/forward01")
+    public String forward01() {
+
+        return "forward:/forward02";
+    }
+
+    @RequestMapping("/forward02")
+    public String forward02() {
+
+        return "forward:/test";
+    }
+
 }
 
