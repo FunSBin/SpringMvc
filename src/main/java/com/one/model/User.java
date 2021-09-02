@@ -1,20 +1,25 @@
 package com.one.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public class User {
+    private Integer id;
     private String name;
-    private Integer age;
-    private Date birthDate;
+    @JsonIgnore    // 当返回javaBean 的json时 会忽略该属性
+    private String password;
+    @JsonFormat(pattern = "yyyy-MM-dd")   // 用户转换json时格式化数据   JsonFormat和DateTimeFormat只需要设置一个可以了
+    private Date birthady;
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", birthDate=" + birthDate +
-                '}';
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -25,19 +30,39 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthady() {
+        return birthady;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthady(Date birthady) {
+        this.birthady = birthady;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", birthady=" + birthady +
+                '}';
+    }
+
+    public User() {
+    }
+
+    public User(Integer id, String name, String password, Date birthady) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.birthady = birthady;
     }
 }
